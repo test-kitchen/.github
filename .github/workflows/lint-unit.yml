@@ -34,8 +34,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Run Markdown Lint
-        uses: actionshub/markdownlint@main
+      - uses: DavidAnson/markdownlint-cli2-action@v5
+        with:
+          globs: "**/*.md"
 
   test:
     name: Unit Test with Ruby ${{ matrix.ruby }}
