@@ -4,10 +4,10 @@ name: Lint & Unit test
   workflow_call:
     inputs:
       bundle_with:
-        description: "Bundle with option for Cookstyle, chose the bundler group that Cookstyle is in"
+        description: "Bundle with option for Chefstyle, chose the bundler group that Chefstyle is in"
         type: "string"
         required: false
-        default: "cookstyle"
+        default: "chefstyle"
       bundle_without:
         description: "Bundle without the listed groups of Gems"
         type: string
