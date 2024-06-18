@@ -5,7 +5,7 @@ name: Lint & Unit test
   workflow_call:
     inputs:
       bundle_with:
-        description: "Bundle with option for Chefstyle, chose the bundler group that Chefstyle is in"
+        description: "Chose the bundler group name that Chefstyle is in"
         type: "string"
         required: false
         default: "chefstyle"
@@ -29,7 +29,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Check for Gemfile
         id: check
-        run: echo "::set-output name=gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)"
+        run: |
+          echo "gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
@@ -76,7 +77,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Check for Gemfile
         id: check
-        run: echo "::set-output name=gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)"
+        run: |
+          echo "gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
