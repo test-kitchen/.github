@@ -6,4 +6,4 @@ name: Lint & Unit
 
 jobs:
   lint-unit:
-    uses: ./.github/.github/workflows/lint-unit.yml
+    uses: ./.github/workflows/lint-unit.yml
