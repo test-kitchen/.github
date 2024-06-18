@@ -6,4 +6,4 @@ name: Lint & Unit
 
 jobs:
   lint-unit:
-    uses: test-kitchen/.github/.github/workflows/lint-unit.yml@main
+    uses: ./.github/.github/workflows/lint-unit.yml
