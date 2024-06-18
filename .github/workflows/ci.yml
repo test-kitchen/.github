@@ -1,0 +1,9 @@
+---
+name: Lint & Unit
+
+"on":
+  pull_request:
+
+jobs:
+  lint-unit:
+    uses: ./.github/workflows/lint-unit.yml
