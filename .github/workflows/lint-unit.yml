@@ -30,7 +30,7 @@ jobs:
       - name: Check for Gemfile
         id: check
         run: |
-          echo "gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
+          echo "gemfile=$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
@@ -78,7 +78,7 @@ jobs:
       - name: Check for Gemfile
         id: check
         run: |
-          echo "gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
+          echo "gemfile=$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_OUTPUT
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
