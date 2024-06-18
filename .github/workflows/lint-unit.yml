@@ -1,3 +1,4 @@
+---
 name: Lint & Unit test
 
 "on":
@@ -26,16 +27,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: Check for Gemfile
+        id: check
+        run: echo "::set-output name=gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)"
       - name: Setup Ruby
+        if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-
       - uses: r7kamura/rubocop-problem-matchers-action@v1
-
+        if: steps.check.outputs.gemfile == 'true'
       - name: Chef Style
+        if: steps.check.outputs.gemfile == 'true'
         run: bundle exec chefstyle
 
   yamllint:
@@ -70,12 +74,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: Check for Gemfile
+        id: check
+        run: echo "::set-output name=gemfile::$(if [ -f Gemfile ]; then echo 'true'; else echo 'false'; fi)"
       - name: Setup Ruby
+        if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1.180.1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-
       - name: Rake Test
+        if: steps.check.outputs.gemfile == 'true'
         run: bundle exec rake test
