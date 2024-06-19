@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/test-kitchen/.github/compare/v0.2.1...v0.2.2) (2024-06-19)
+
+
+### Bug Fixes
+
+* remove ruby 3.4 from unit tests ([#17](https://github.com/test-kitchen/.github/issues/17)) ([300ce4b](https://github.com/test-kitchen/.github/commit/300ce4ba863f9a8cc5f17e9fee672ab0b15b1b19))
+
 ## [0.2.1](https://github.com/test-kitchen/.github/compare/v0.2.0...v0.2.1) (2024-06-18)
 
 
