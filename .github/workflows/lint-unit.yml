@@ -21,6 +21,7 @@ jobs:
       BUNDLE_WITH: ${{ inputs.bundle_with }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ["3.3"]
     name: Chefstyle on Ruby
@@ -74,6 +75,7 @@ jobs:
     env:
       BUNDLE_WITHOUT: ${{ inputs.bundle_without }}
     strategy:
+      fail-fast: false
       matrix:
         ruby: ["3.1", "3.2", "3.3"]
     steps:
