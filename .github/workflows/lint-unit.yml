@@ -5,10 +5,10 @@ name: Lint & Unit test
   workflow_call:
     inputs:
       bundle_with:
-        description: "Chose the bundler group name that Chefstyle is in"
+        description: "Chose the bundler group name that Cookstyle is in"
         type: "string"
         required: false
-        default: "chefstyle"
+        default: "cookstyle"
       bundle_without:
         description: "Bundle without the listed groups of Gems"
         type: string
@@ -16,7 +16,7 @@ name: Lint & Unit test
         default: "development"
 
 jobs:
-  chefstyle:
+  cookstyle:
     env:
       BUNDLE_WITH: ${{ inputs.bundle_with }}
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby: ["3.3"]
-    name: Chefstyle on Ruby
+    name: Cookstyle/Chefstyle on Ruby
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -44,9 +44,9 @@ jobs:
           bundler-cache: true
       - uses: r7kamura/rubocop-problem-matchers-action@v1
         if: steps.check.outputs.gemfile == 'true'
-      - name: Chef Style
+      - name: Cookstyle
         if: steps.check.outputs.gemfile == 'true'
-        run: bundle exec chefstyle
+        run: bundle exec cookstyle --chefstyle
 
   yamllint:
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
   test:
     name: Unit Test with Ruby
     runs-on: ubuntu-latest
-    needs: [yamllint, chefstyle]
+    needs: [yamllint, cookstyle]
     env:
       BUNDLE_WITHOUT: ${{ inputs.bundle_without }}
     strategy:
