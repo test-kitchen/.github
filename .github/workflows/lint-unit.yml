@@ -5,7 +5,7 @@ name: Lint & Unit test
   workflow_call:
     inputs:
       bundle_with:
-        description: "Chose the bundler group name that Cookstyle is in"
+        description: "Choose the bundler group name that Cookstyle is in"
         type: "string"
         required: false
         default: "cookstyle"
@@ -14,16 +14,21 @@ name: Lint & Unit test
         type: string
         required: false
         default: "development"
+      bundle_only:
+        description: "Bundle only the listed groups of Gems"
+        type: string
+        required: false
+        default: "cookstyle"
 
 jobs:
   cookstyle:
     env:
-      BUNDLE_WITH: ${{ inputs.bundle_with }}
+      BUNDLE_ONLY: ${{ inputs.bundle_only }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.3"]
+        ruby: ["3.4"]
     name: Cookstyle/Chefstyle on Ruby
     steps:
       - name: Checkout code
