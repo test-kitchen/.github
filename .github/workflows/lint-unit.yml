@@ -19,6 +19,7 @@ jobs:
   cookstyle:
     env:
       BUNDLE_WITH: ${{ inputs.bundle_with }}
+      BUNDLE_WITHOUT: ${{ inputs.bundle_without }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
