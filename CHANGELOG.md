@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/test-kitchen/.github/compare/v0.2.3...v0.2.4) (2025-08-15)
+
+
+### Bug Fixes
+
+* Replace EOL ruby 3.1 testing with 3.4 ([#30](https://github.com/test-kitchen/.github/issues/30)) ([d35cbb8](https://github.com/test-kitchen/.github/commit/d35cbb8be393534349b214c741c8becf6654bed7))
+
 ## [0.2.3](https://github.com/test-kitchen/.github/compare/v0.2.2...v0.2.3) (2024-06-19)
 
 
