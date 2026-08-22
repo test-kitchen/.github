@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.1"]
+        ruby: ["3.2"]
     name: Cookstyle/Chefstyle on Ruby
     steps:
       - name: Checkout code
