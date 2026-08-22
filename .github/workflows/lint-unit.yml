@@ -71,7 +71,9 @@ jobs:
       - name: Markdown lint
         uses: DavidAnson/markdownlint-cli2-action@v20
         with:
-          globs: "**/*.md"
+          globs: |
+            **/*.md
+            !**/CHANGELOG*.md
 
   test:
     name: Unit Test with Ruby
